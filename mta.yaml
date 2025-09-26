@@ -1,7 +1,7 @@
 _schema-version: 3.3.0
-ID: bookshop
+ID: bookshop-mobile
 version: 1.0.0
-description: "A simple CAP project."
+description: "CAP sample application extended with MDK app."
 parameters:
   enable-parallel-deployments: true
 build-parameters:
@@ -26,6 +26,8 @@ modules:
     requires:
       - name: bookshop-auth
       - name: bookshop-db
+      - name: bookshop-mobile-connectivity
+      - name: bookshop-mobile-destination
 
   - name: bookshop-db-deployer
     type: hdb
@@ -50,6 +52,7 @@ modules:
           url: ~{srv-url}
           forwardAuthToken: true
       - name: bookshop-auth
+      - name: bookshop-mobile-destination
     provides:
       - name: app-api
         properties:
@@ -76,3 +79,13 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: bookshop-mobile-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
+  - name: bookshop-mobile-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite

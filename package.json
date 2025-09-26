@@ -1,9 +1,9 @@
 {
-  "name": "bookshop",
+  "name": "bookshop-mobile",
   "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
+  "description": "CAP sample application extended with MDK app",
+  "repository": "https://github.com/lnoens-sap/bookshop-mobile.git",
+  "license": "Apache License Version 2.0",
   "private": true,
   "dependencies": {
     "@sap/cds": "^9",
@@ -30,7 +30,9 @@
     "requires": {
       "[production]": {
         "auth": "xsuaa",
-        "db": "hana"
+        "db": "hana",
+        "connectivity": true,
+        "destinations": true
       }
     }
   }
